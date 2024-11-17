@@ -1,4 +1,4 @@
-PyroTGFork==2.1.32.15
+pyrogram<=2.0.106
 tgcrypto<=1.2.3
 aiohttp<=3.8.5
 python-dotenv<=0.20.0
