@@ -1,16 +1,23 @@
-# Don't Remove Credit @VJ_Botz
-# Subscribe YouTube Channel For Amazing Bot @Tech_VJ
-# Ask Doubt on telegram @KingVJ01
-
+# Use the official Python 3.10 slim image as the base
 FROM python:3.10.8-slim-buster
 
-RUN apt update && apt upgrade -y
-RUN apt install git -y
-COPY requirements.txt /requirements.txt
+# Set environment variables to avoid Python buffering (optional but helps with logs)
+ENV PYTHONUNBUFFERED=1
 
-RUN cd /
-RUN pip3 install -U pip && pip3 install -U -r requirements.txt
-RUN mkdir /filetolinkfffff
+# Install necessary system dependencies (e.g., git) and upgrade apt packages
+RUN apt update && apt upgrade -y && apt install -y git
+
+# Set the working directory to /filetolinkfffff
 WORKDIR /filetolinkfffff
+
+# Copy the requirements file to the container
+COPY requirements.txt /filetolinkfffff/requirements.txt
+
+# Install Python dependencies
+RUN pip install -U pip && pip install -r requirements.txt
+
+# Copy the entire project into the container
 COPY . /filetolinkfffff
+
+# Command to run your bot
 CMD ["python", "bot.py"]
