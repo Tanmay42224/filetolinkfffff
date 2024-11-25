@@ -20,5 +20,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy application code
 COPY . .
 
+# Debugging step to verify files
+RUN ls -al /app
+
 # Command to run the application
-CMD ["python", "bot.py"]
+CMD ["python", "utils_bot.py"]
