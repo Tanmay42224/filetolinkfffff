@@ -14,6 +14,7 @@ WORKDIR /filetolinkfffff
 COPY requirements.txt /filetolinkfffff/requirements.txt
 
 # Install Python dependencies without cache
+RUN apk update && apk add build-base
 RUN pip install -U pip && pip install --no-cache-dir -r requirements.txt
 
 # Copy the entire project into the container
